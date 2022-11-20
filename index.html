@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // TODO: Add code to check answers to questions
+            function answerHTML(correct, element) {
+            if (correct) {
+                document.getElementById(element).innerHTML = "Correct!"
+            }
+            else {
+                document.getElementById(element).innerHTML = "Incorrect!"
+            }
+        }
+
+        function resetButtonsState() {
+
+            var buttons = document.querySelectorAll(".button");
+            buttons.forEach(function (button) {
+                button.classList.remove('incorrect');
+                button.classList.remove('correct');
+            })
+        }
+
+        function getAnswerButton() {
+            resetButtonsState()
+            if (event.target.id == "correct") {
+                event.target.classList.add('correct');
+                answerHTML(true, "return_part_1");
+            }
+            else {
+                event.target.classList.add('incorrect');
+                answerHTML(false, "return_part_1");
+            }
+
+        }
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var buttons = document.querySelectorAll(".button");
+            buttons.forEach(function (button) {
+                button.addEventListener("click", getAnswerButton);
+            })
+
+            inputField = document.querySelector('input')
+            checkButton = document.querySelector("#check");
+            checkButton.addEventListener('click', function (evt) {
+                if (inputField.value.toLowerCase() == "iran") {
+                    answerHTML(true, "return_part_2");
+                }
+                else {
+                    answerHTML(false, "return_part_2");
+                }
+            });
+        });
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+            <!-- TODO: Add multiple choice question here -->
+            <h3>Who, in 1903, was the first woman to win a Nobel Prize?</h3>
+            <h2 id="return_part_1"></h2>
+            <button class="button">Anne Frank</button>
+            <button id="correct" class="button">Marie Curie</button>
+            <button class="button">Mahsa Amini</button>
+            <button class="button" title="Eshqe To Daqoonam Kard">Farangis</button>
+            <button class="button">Jane Austen</button>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+            <!-- TODO: Add free response question here -->
+            <h3>People in which country started to begin a revolution in 2022?</h3>
+            <h2 id="return_part_2"></h2>
+            <input type="text">
+            <button id="check" class="input">Check Answer</button>
+
+            </div>
+
+        </div>
+    </body>
+</html>
