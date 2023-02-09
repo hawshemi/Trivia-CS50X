@@ -1,4 +1,4 @@
-# Trivia-CS50
-Week 8 Lab project for CS50
+# Trivia-CS50X
+Week 8 Lab project for CS50X
 
-Live Website: https://hawshemi.github.io/Trivia-CS50/
+Live Website: https://hawshemi.github.io/Trivia-CS50X/
